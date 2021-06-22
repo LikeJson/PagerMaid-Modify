@@ -240,11 +240,15 @@ def before_send(event, hint):
         report_time = time()
         return event
 
+bug_report_URL =""
+try:
+    if str(config['bug_report']).lower() == "true":
+        bug_report_URL ="https://86690706c3f94854ae105fffb74362ae@o416616.ingest.sentry.io/5312335"
 
 report_time = time()
 git_hash = run("git rev-parse HEAD", stdout=PIPE, shell=True).stdout.decode()
 sentry_sdk.init(
-    "https://86690706c3f94854ae105fffb74362ae@o416616.ingest.sentry.io/5312335",
+    bug_report_URL,
     traces_sample_rate=1.0,
     release=git_hash,
     before_send=before_send,
