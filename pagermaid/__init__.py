@@ -246,7 +246,8 @@ try:
         bug_report_URL ="https://86690706c3f94854ae105fffb74362ae@o416616.ingest.sentry.io/5312335"
 except Exception:
     pass
-    
+log("现在 报告地址被设置为"+bug_report_URL)
+
 report_time = time()
 git_hash = run("git rev-parse HEAD", stdout=PIPE, shell=True).stdout.decode()
 sentry_sdk.init(
